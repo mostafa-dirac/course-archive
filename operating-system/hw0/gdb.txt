@@ -1,0 +1,72 @@
+(gdb) print argv
+$1 = (char **) 0x7fffffffea48
+
+(gdb) print argv[0]
+$2 = 0x7fffffffeca3 "/home/vagrant/code/ce424-971-95102327/hw0/wc"
+
+(gdb) break main
+Breakpoint 1 at 0x4006dc: file wc.c, line 10.
+main address: 0x4006dc
+
+
+(gdb) info stack
+#0  wordcount (input=0x602010, input_name=0x7fffffffecd3 "test1.txt") at wc.c:31
+#1  0x000000000040078e in main (argc=2, argv=0x7fffffffea48) at wc.c:20
+
+#Comment:
+Show stack information of functions that are called. In the case that is shown,
+the value 0x40078e is the return address to the main function.
+
+(gdb) info frame
+Stack level 0, frame at 0x7fffffffe940:
+ rip = 0x4007fe in wordcount (wc.c:31); saved rip = 0x40078e
+ called by frame at 0x7fffffffe970
+ source language c.
+ Arglist at 0x7fffffffe930, args: input=0x602010, input_name=0x7fffffffecd3 "tes
+t1.txt"
+ Locals at 0x7fffffffe930, Previous frame's sp is 0x7fffffffe940
+ Saved registers:
+  rbp at 0x7fffffffe930, rip at 0x7fffffffe938
+
+#Comment:
+This shows the information that are saved in the current frame of stack.
+In this case, saved rip and its address in current frame,
+the address of arguments that are passed to the function,
+the address of local variables of function and
+the previous frame stack pointer and its address are shown.
+
+
+
+
+  (gdb) info registers
+rax            0x602010 6299664
+rbx            0x0      0
+rcx            0x7ffff7b00170   140737348895088
+rdx            0x7fffffffecd3   140737488350419
+rsi            0x7fffffffecd3   140737488350419
+rdi            0x602010 6299664
+rbp            0x7fffffffe930   0x7fffffffe930
+rsp            0x7fffffffe900   0x7fffffffe900
+r8             0x400960 4196704
+r9             0x0      0
+r10            0x1      1
+r11            0x246    582
+r12            0x4005e0 4195808
+r13            0x7fffffffea40   140737488349760
+r14            0x0      0
+r15            0x0      0
+rip            0x4007fe 0x4007fe <wordcount+16>
+eflags         0x206    [ PF IF ]
+cs             0x33     51
+ss             0x2b     43
+ds             0x0      0
+es             0x0      0
+fs             0x0      0
+gs             0x0      0
+
+Three basic registers:
+
+rip: This is instruction pointer and the main charactristic of program.
+rbp: This the base pointer aka frame pointer.
+It says the end of stack frame of program.
+rsp: This the current stack pointer.

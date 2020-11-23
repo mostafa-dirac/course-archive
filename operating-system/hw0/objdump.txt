@@ -1,0 +1,29 @@
+file format elf64-x86-64
+
+
+architecture: i386:x86-64
+
+
+.interp
+.note.ABI-tag
+.note.gnu.build-id
+.gnu.hash
+.dynsym
+.dynstr
+.init
+.text
+.rodata
+.init_array
+.dynamic
+.data
+.comment
+
+Address					 Segment
+00000000004006cd g     F .text	0000000000000121              main
+
+
+
+NO. Stack and heap are concepts related to OS and 
+They will be created in runtime. So there is no segment
+for heap or stack in the executable file.
+
